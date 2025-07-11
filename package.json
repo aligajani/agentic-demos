@@ -1,0 +1,40 @@
+{
+  "name": "agentic-demos",
+  "version": "1.0.0",
+  "description": "A collection of AI agent demonstrations using the OpenAI Agents framework",
+  "main": "run.js",
+  "type": "module",
+  "scripts": {
+    "start": "node run.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "openai",
+    "demo",
+    "weather",
+    "math",
+    "history",
+    "tutor"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/agentic-demos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/agentic-demos/issues"
+  },
+  "homepage": "https://github.com/yourusername/agentic-demos#readme",
+  "dependencies": {
+    "@openai/agents": "^0.0.10",
+    "axios": "^1.10.0",
+    "dotenv": "^16.4.5",
+    "zod": "^3.25.76"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
