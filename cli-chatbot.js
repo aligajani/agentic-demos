@@ -30,10 +30,20 @@ const getWeatherTool = tool({
   },
 });
 
+const WeatherEvent = z.object({
+  city: z.string(),
+  weather: z.string(),
+  temperature: z.string(),
+  humidity: z.string(),
+  windSpeed: z.string(),
+  windDirection: z.string(),
+});
+
 const weatherAgent = new Agent({
   name: 'Weather Agent',
   instructions: 'You provide real-time weather information for any city worldwide. When users ask about weather, use the getWeatherTool to fetch current weather data and provide a helpful, conversational response. Respond concisely and to the point.',
   tools: [getWeatherTool],
+  outputType: WeatherEvent
 });
 
 const historyTutorAgent = new Agent({
@@ -88,7 +98,15 @@ class CLIChatbot {
         
         const result = await run(triageAgent, input);
         
-        console.log(chalk.cyan('🤖 Assistant: ') + result.finalOutput);
+        let output = result.finalOutput;
+        if (typeof output === 'object') {
+          try {
+            output = JSON.stringify(output, null, 2);
+          } catch (e) {
+            output = String(output);
+          }
+        }
+        console.log(chalk.cyan('🤖 Assistant: ') + output);
         console.log(''); // Empty line for readability
         
       } catch (error) {
